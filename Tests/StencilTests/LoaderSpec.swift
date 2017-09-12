@@ -29,21 +29,17 @@ func testTemplateLoader() {
       try expect(try environment.loadTemplate(name: "../LoaderSpec.swift")).toThrow()
     }
   }
-
   describe("DictionaryLoader") {
     let loader = DictionaryLoader(templates: [
         "index.html": "Hello World"
     ])
     let environment = Environment(loader: loader)
-
     $0.it("errors when a template cannot be found") {
       try expect(try environment.loadTemplate(name: "unknown.html")).toThrow()
     }
-
     $0.it("errors when an array of templates cannot be found") {
       try expect(try environment.loadTemplate(names: ["unknown.html", "unknown2.html"])).toThrow()
     }
-
     $0.it("can load a template from a known templates") {
       _ = try environment.loadTemplate(name: "index.html")
     }

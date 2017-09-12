@@ -41,18 +41,14 @@ func testForNode() {
       let context = Context(dictionary: ["range": 1...3])
       let nodes: [NodeType] = [VariableNode(variable: "item")]
       let node = ForNode(resolvable: Variable("range"), loopVariables: ["item"], nodes: nodes, emptyNodes: [])
-
       try expect(try node.render(context)) == "123"
     }
-
     $0.it("renders a context variable of type CountableRange<Int>") {
       let context = Context(dictionary: ["range": 1..<4])
       let nodes: [NodeType] = [VariableNode(variable: "item")]
       let node = ForNode(resolvable: Variable("range"), loopVariables: ["item"], nodes: nodes, emptyNodes: [])
-
       try expect(try node.render(context)) == "123"
     }
-
 #if os(OSX)
     $0.it("renders a context variable of type NSArray") {
       let nsarray_context = Context(dictionary: [
@@ -82,7 +78,6 @@ func testForNode() {
       let node = ForNode(resolvable: Variable("items"), loopVariables: ["item"], nodes: nodes, emptyNodes: [])
       try expect(try node.render(context)) == "112233"
     }
-
     $0.it("renders the given nodes while providing item counter") {
       let nodes: [NodeType] = [VariableNode(variable: "item"), VariableNode(variable: "forloop.counter0")]
       let node = ForNode(resolvable: Variable("items"), loopVariables: ["item"], nodes: nodes, emptyNodes: [])
