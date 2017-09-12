@@ -1,11 +1,20 @@
+// swift-tools-version:4.0
+
+import Foundation
 import PackageDescription
 
 let package = Package(
   name: "Stencil",
+  products: [
+    .library(name: "Stencil", targets: ["Stencil"])
+  ],
   dependencies: [
-    .Package(url: "https://github.com/kylef/PathKit.git", majorVersion: 0, minor: 8),
-
+    .package(url: "https://github.com/Sense-Medical/PathKit.git", .branch("cortex")),
     // https://github.com/apple/swift-package-manager/pull/597
-    .Package(url: "https://github.com/kylef/Spectre.git", majorVersion: 0, minor: 7),
+    .package(url: "https://github.com/Sense-Medical/Spectre.git", .branch("cortex")),
+  ],
+  targets: [
+    .target(name: "Stencil", path: "Sources"),
+    .testTarget(name: "StencilTests", dependencies: ["Stencil"], path: "Tests")
   ]
 )
