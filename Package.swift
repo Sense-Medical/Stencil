@@ -14,7 +14,7 @@ let package = Package(
     .package(url: "https://github.com/Sense-Medical/Spectre.git", .branch("cortex")),
   ],
   targets: [
-    .target(name: "Stencil", path: "Sources"),
-    .testTarget(name: "StencilTests", dependencies: ["Stencil"], path: "Tests")
+    .target(name: "Stencil", dependencies: ["PathKit"], path: "Sources"),
+    .testTarget(name: "StencilTests", dependencies: ["Stencil", "Spectre"], path: "Tests")
   ]
 )
